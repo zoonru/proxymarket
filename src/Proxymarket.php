@@ -3,6 +3,9 @@
 namespace Proxymarket;
 
 
+/**
+ * @psalm-immutable
+ */
 class Proxymarket {
 
 	protected $curl;
@@ -46,6 +49,7 @@ class Proxymarket {
 	 * @param ?int $speed
 	 * @return array
 	 * @throws Exception\ProxymarketInvalidParameterException
+	 * @psalm-pure
 	 */
 	private static function createBuyParamsArray($count, $type, $duration , $country , $promocode, $subnet, $speed) {
 		$params = [];
@@ -100,6 +104,7 @@ class Proxymarket {
 	 * @param $sort
 	 * @return array
 	 * @throws Exception\ProxymarketInvalidParameterException
+	 * @psalm-pure
 	 */
 	private static function createListParamsArray($type, $page, $pageSize, $sort) {
 		$params = [];
@@ -129,6 +134,7 @@ class Proxymarket {
 	/**
 	 * Proxymarket constructor.
 	 * @param $apiKey
+	 * @psalm-capabilities read-props
 	 */
 	public function __construct($apiKey) {
 		$this->curl = new HttpClient\Curl();
@@ -148,6 +154,7 @@ class Proxymarket {
 	 * @throws Exception\ProxymarketInvalidApikey
 	 * @throws Exception\ProxymarketInvalidParameterException
 	 * @throws Exception\ProxymarketUnsuccessResponse
+	 * @psalm-capabilities read-props
 	 */
 	public function buyProxy($count, $type = 'ipv4', $duration = 30, $country = 'ru', $promocode = '', $subnet = null, $speed = null) {
 		if (null === $this->apiKey) {
@@ -173,6 +180,7 @@ class Proxymarket {
 	 * @throws Exception\ProxymarketError
 	 * @throws Exception\ProxymarketInvalidParameterException
 	 * @throws Exception\ProxymarketUnsuccessResponse
+	 * @psalm-capabilities read-props
 	 */
 	public function listProxy($type = 'all', $page = 1, $pageSize = 0, $sort = 0) {
 		$url = $this->serverUrl.$this->listUrl.$this->apiKey;
