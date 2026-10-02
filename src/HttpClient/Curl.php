@@ -137,6 +137,7 @@ class Curl {
 	* Returns structurated response
 	*
 	* @return array
+	 * @psalm-capabilities read-props
 	*/
 	public function getResponse() {
 		$curlOptions = $this->curlOptions;
@@ -162,6 +163,7 @@ class Curl {
 	* Reset curl options
 	*
 	* @param array $curlOptions
+	 * @psalm-capabilities read-props|write-this-props|write-refs
 	*/
 	public function setCurlOptions($curlOptions) {
 		foreach ($curlOptions as $opt => $value) {
@@ -231,6 +233,7 @@ class Curl {
 	* @param string $header
 	*
 	* @return integer
+	 * @psalm-capabilities read-props|write-this-props|write-refs
 	*/
 	protected function fetchResponseHeader($curl, $header) {
 		$pos = strpos($header, ':');
@@ -250,6 +253,7 @@ class Curl {
 	* Convert request headers to the expect curl format
 	*
 	* @return array
+	 * @psalm-capabilities read-props
 	*/
 	protected function prepareRequestHeaders() {
 		$headers = [];
