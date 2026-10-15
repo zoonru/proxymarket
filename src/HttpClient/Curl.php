@@ -128,7 +128,6 @@ class Curl {
 		$this->responseClientError = curl_error($curl);
 		$this->responseClientInfo = curl_getinfo($curl);
 		
-		curl_close($curl);
 
 		return $this->responseBody;
 	}
