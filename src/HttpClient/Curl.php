@@ -108,7 +108,6 @@ class Curl {
 		$curl = curl_init();
 
 		$body_content = json_encode($parameters);
-		var_dump($body_content);
 
 		$this->curlOptions[CURLOPT_POST] = true;
 		$this->curlOptions[CURLOPT_POSTFIELDS] = $body_content;
