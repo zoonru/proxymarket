@@ -10,7 +10,8 @@ class Proxymarket {
 
 	protected $curl;
 
-	protected $serverUrl = 'https://proxy.market/dev-api/';
+	// proxy.market/dev-api/ answers 307 to this host
+	protected $serverUrl = 'https://api.dashboard.proxy.market/dev-api/';
 	protected $listUrl = 'list/';
 	protected $buyUrl = 'buy-proxy/';
 	protected $apiKey;

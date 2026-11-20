@@ -18,8 +18,8 @@ class Curl {
 	protected $curlOptions = [
 		CURLOPT_TIMEOUT	=> 30,
 		CURLOPT_CONNECTTIMEOUT => 30,
-		CURLOPT_SSL_VERIFYPEER => false,
-		CURLOPT_SSL_VERIFYHOST => false,
+		CURLOPT_SSL_VERIFYPEER => true,
+		CURLOPT_SSL_VERIFYHOST => 2,
 		CURLOPT_RETURNTRANSFER => true,
 		CURLOPT_FOLLOWLOCATION => true,
 		CURLOPT_MAXREDIRS => 5,
@@ -109,7 +109,6 @@ class Curl {
 		$curl = curl_init();
 
 		$body_content = json_encode($parameters);
-		var_dump($body_content);
 
 		$this->curlOptions[CURLOPT_POST] = true;
 		$this->curlOptions[CURLOPT_POSTFIELDS] = $body_content;
